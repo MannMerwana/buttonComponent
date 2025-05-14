@@ -1,12 +1,10 @@
 import { useState } from 'react'
 import ButtonComponent from './components/ButtonComponent'
-import SizeStyles from './components/SizeStyles';
+
 import './App.css'
 
 function App() {
   const [inputValue, setInputValue] = useState("");
-  const [width,setWidth]=useState(16);
-  const [height, setHeight] = useState(16);
   // const [link,setLink] = useState('');
 
 
@@ -14,48 +12,41 @@ function App() {
     <>
       <div className="button">
         <ButtonComponent
-          type="link"
-          buttonType="primary"
-          value={inputValue}
-          placeholder="Click Here"
-          link="https://google.com"
-          text={inputValue}
-        />
-        {}
-        <button
           type="button"
           buttonType="primary"
+          placeholder="Click Here"
           value={inputValue}
-         
           onChange={(e) => setInputValue(e.target.value)}
-          // onClick={()=> window.open(setLink())}
-          placeholder="Container"
           text={inputValue}
           style={{
             cursor: "pointer",
-            textAlign:'center',
-          
-            padding:'5px',
+            textAlign: "center",
+            padding: "15px",
             color: "black",
-          }}>
-            Click Here
-          </button>
-         
-        
-        <SizeStyles
-        width={width}
-        height={height}
-        setHeight={setHeight}
-        setWidth={setWidth}
-        />
-        {/* <Typography
-        fontType='inter'
-        fontWeight='medium'
-        Size='16'
-        fontHeight='20'
-        LetterSpacing='20'
-        
-        /> */}
+          }}
+          typography={{
+            fontFamily: "Poppins",
+            fontWeight: 600,
+            fontSize: "35px",
+            lineHeight: "24px",
+            letterSpacing: "1px",
+          }}
+          colors={{
+            color: "black",
+            backgroundColor: "red",
+          }}
+          size={{
+            width: "45%",
+            height: "10%",
+          }}
+          // Transform={{
+          //   rotate: "20deg",
+          //   scale: "1.5",
+          // }}
+          shadow={{
+            boxShadow: "inset 0 0 10px rgba(0, 105, 242, 0.5)",
+          }}
+        ></ButtonComponent>
       </div>
     </>
   );

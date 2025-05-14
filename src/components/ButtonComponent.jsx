@@ -2,18 +2,25 @@
 
 import React from "react";
 import "./buttonComponent.css";
+import { advanced } from "../features/advanced";
+import { display } from "../features/display";
 
 const ButtonComponent = (
     {    type,
          buttonType,
          placeholder,
          link, 
-         style 
+         style ,
+         size,
+         typography={},
+         colors={},
+        //  Transform={},
+         shadow={},
     }) => {
   const handleClick = (e) => {
     const isLink =
       link && (link.startsWith("http://") || link.startsWith("https://"));
-    if (isLink && type ==='link') {
+    if (isLink) {
       window.open(link, "_blank");
     } else {
       e.preventDefault(); // prevent default anchor behavior if needed
@@ -21,20 +28,14 @@ const ButtonComponent = (
     }
   };
   const classNames = `button-component ${buttonType}`;
+const finalStyle={...style,...display(typography,colors,shadow),...advanced(size)}
 
- if (type === "link") {
-   return (
-     <a href="#" onClick={handleClick} className={classNames} style={style}>
-       {placeholder}
-     </a>
-   );
- }
   return (
     <button
       onClick={handleClick}
       className={classNames}
-      style={style}
-      type="text    " // this is HTML attribute, not the prop
+      style={finalStyle}
+      type={type}// this is HTML attribute, not the prop
     >
       {placeholder}
     </button>
