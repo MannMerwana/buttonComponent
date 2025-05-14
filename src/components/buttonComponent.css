@@ -1,0 +1,10 @@
+.button{
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+    margin-left:10px;
+}
+input::placeholder{
+    color: black;
+    font-family: 'inter';
+}
